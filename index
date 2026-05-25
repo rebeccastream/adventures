@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memories</title>
+</head>
+<body>
+  <h1>Adventures</h1>
+  <ul>
+    <li><a href="/adventures/itl">Italy</a></li>
+    <li><a href="/adventures/sk-seoul">South Korea</a></li>
+    <li><a href="/adventures/tai">Taiwan</a></li>
+    <li><a href="/adventures/uk">United Kingdom</a></li>
+    <li><a href="/adventures/bel">Belgium</a></li>
+    <li><a href="/adventures/hol">Netherlands</a></li>
+  </ul>
+</body>
+</html>
