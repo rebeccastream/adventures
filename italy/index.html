@@ -1,1 +1,45 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Italy</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #000; height: 100vh; overflow: hidden; }
+    .gallery {
+      display: flex;
+      height: 100vh;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .slide {
+      min-width: 100vw;
+      height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .slide img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+  <div class="gallery">
+    <div class="slide">
+      <img src="https://via.placeholder.com/800x600?text=Photo+1" alt="Photo 1">
+    </div>
+    <div class="slide">
+      <img src="https://via.placeholder.com/800x600?text=Photo+2" alt="Photo 2">
+    </div>
+    <div class="slide">
+      <img src="https://via.placeholder.com/800x600?text=Photo+3" alt="Photo 3">
+    </div>
+  </div>
+</body>
+</html>
