@@ -73,7 +73,7 @@ small {
 }
 .onBG {
   font-size: 0.8125rem;
-  color: rgba(255,255,255,0.7);
+  color: var(--color-light);  
   font-weight: 300;
   margin-top: 0.375rem;
   position: relative; z-index: 1;
@@ -92,7 +92,12 @@ small {
   align-items: center;
   margin-bottom: 1.25rem;
 }
-.date-pin { font-size: 1.375rem; margin-bottom: 0.25rem; }
+.date-pin {   
+  font-size: 0.8125rem; 
+  margin-bottom: 0.25rem;
+  color: var(--accent);
+
+}
 
 .date-separator h3 {
   font-family: var(--font-serif);
@@ -193,6 +198,7 @@ small {
   );
 }
 
+
 .photo-block {
   background: #fff;
   border-radius: 16px;
@@ -201,4 +207,55 @@ small {
 }
 .photo-block img {
   width: 100%;
-  height
+  height: 13.75rem;
+  object-fit: cover;
+  display: block;
+}
+.photo-caption { padding: 0.625rem 0.875rem 0.875rem; }
+.photo-location {
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+
+.story-block {
+  background: var(--accent);
+  border-radius: 16px;
+  padding: 1.125rem;
+}
+.story-prompt {
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  color: var(--accent-light);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.story-block p {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--color-light);
+  line-height: 1.65;
+}
+.story-date {
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.55);
+  margin-top: 0.625rem;
+  letter-spacing: 0.06em;
+}
+
+.end-cap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 0 3rem;
+  gap: 0.375rem;
+}
+
+.end-cap p {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  color: var(--accent);
+  text-align: center;
+}
