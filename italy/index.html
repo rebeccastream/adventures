@@ -4,42 +4,437 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Italy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #000; height: 100vh; overflow: hidden; }
-    .gallery {
-      display: flex;
-      height: 100vh;
-      overflow-x: scroll;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
+
+    body {
+      background: #faf8f4;
+      font-family: 'DM Sans', sans-serif;
+      color: #2c2a27;
     }
-    .slide {
-      min-width: 100vw;
-      height: 100vh;
-      scroll-snap-align: start;
+
+    /* COVER */
+    .cover-hero {
+      background: #D44720;
+      padding: 52px 28px 32px;
+      position: relative;
+      overflow: hidden;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .cover-blob1 {
+      position: absolute; top: -40px; right: -40px;
+      width: 180px; height: 180px; border-radius: 50%;
+      background: #E9752E; opacity: 0.45;
+    }
+    .cover-blob2 {
+      position: absolute; bottom: -20px; left: -30px;
+      width: 110px; height: 110px; border-radius: 50%;
+      background: #B83A15; opacity: 0.4;
+    }
+    .cover-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 56px;
+      font-weight: 400;
+      font-style: italic;
+      color: #fff;
+      line-height: 1;
+      position: relative; z-index: 1;
+    }
+    .cover-trips {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 300;
+      margin-top: 6px;
+      position: relative; z-index: 1;
+    }
+
+    /* TIMELINE */
+    .timeline {
+      padding: 32px 24px 60px;
+    }
+    .date-separator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .date-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #D44720;
+      margin-bottom: 6px;
+    }
+    .date-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: #D44720;
+    }
+
+    .dashed-line {
+      width: 1.5px;
+      background: repeating-linear-gradient(
+        to bottom,
+        #D44720 0px, #D44720 6px,
+        transparent 6px, transparent 12px
+      );
+      margin: 0 auto;
+      height: 20px;
+      width: 1.5px;
+    }
+
+    .city-row {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0;
+    }
+    .city-connector {
+      height: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .slide img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
+
+    .city-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 0.5px solid rgba(0,0,0,0.08);
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0;
+    }
+    .city-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+    .city-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+    }
+    .city-name {
+      font-size: 15px;
+      font-weight: 500;
+      color: #D44720;
+    }
+    .city-arrow {
+      font-size: 18px;
+      color: #D44720;
+    }
+
+    /* END CAP */
+    .end-cap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px 0 48px;
+      gap: 6px;
+    }
+    .end-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #D44720;
+    }
+    .end-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-style: italic;
+      color: #D44720;
+    }
+
+    /* CITY FEED — hidden by default */
+    .feed-view {
+      display: none;
+      min-height: 100vh;
+    }
+    .feed-view.active { display: block; }
+
+    .feed-hero {
+      background: #D44720;
+      padding: 48px 24px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .feed-back {
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 16px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      position: relative; z-index: 1;
+      background: none; border: none; padding: 0;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .feed-city-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 400;
+      font-style: italic;
+      color: #fff;
+      position: relative; z-index: 1;
+      line-height: 1;
+    }
+    .feed-who {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      margin-top: 6px;
+      font-weight: 300;
+      position: relative; z-index: 1;
+    }
+
+    .feed-content {
+      padding: 24px 20px 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .feed-dashed {
+      height: 28px;
+      display: flex;
+      justify-content: center;
+    }
+    .feed-dashed-line {
+      width: 1.5px;
+      background: repeating-linear-gradient(
+        to bottom,
+        #D44720 0px, #D44720 6px,
+        transparent 6px, transparent 12px
+      );
+    }
+
+    .photo-block {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 0.5px solid rgba(0,0,0,0.08);
+    }
+    .photo-block img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+    .photo-caption {
+      padding: 10px 14px 14px;
+    }
+    .photo-location {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #D44720;
+      margin-bottom: 3px;
+    }
+    .photo-text {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.55;
+    }
+
+    .story-block {
+      background: #D44720;
+      border-radius: 16px;
+      padding: 18px 18px 16px;
+    }
+    .story-prompt {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .story-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-style: italic;
+      color: #fff;
+      line-height: 1.65;
+    }
+    .story-date {
+      font-size: 10px;
+      color: rgba(255,255,255,0.55);
+      margin-top: 10px;
+      letter-spacing: 0.06em;
+    }
+
+    .feed-end {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 0 0;
+      gap: 6px;
     }
   </style>
 </head>
 <body>
-  <div class="gallery">
-    <div class="slide">
-      <img src="photos/IMG_6109.JPG" alt="Italy">
+
+  <!-- COVER VIEW -->
+  <div id="cover-view">
+    <div class="cover-hero">
+      <div class="cover-blob1"></div>
+      <div class="cover-blob2"></div>
+      <div class="cover-title">Italy</div>
+      <div class="cover-trips">1 trip</div>
     </div>
-    <div class="slide">
-      <img src="photos/IMG_6119.JPG" alt="Italy">
-    </div>
-    <div class="slide">
-      <img src="photos/IMG_6174.JPG" alt="Italy">
+
+    <div class="timeline">
+      <div class="date-separator">
+        <div class="date-dot"></div>
+        <div class="date-label">April 2018</div>
+      </div>
+
+      <div class="city-row">
+        <a class="city-card" onclick="openCity('milan'); return false;" href="#">
+          <img src="photos/IMG_6109.JPG" alt="Milan">
+          <div class="city-card-footer">
+            <span class="city-name">Milan</span>
+            <span class="city-arrow">→</span>
+          </div>
+        </a>
+        <div class="city-connector"><div class="dashed-line"></div></div>
+        <a class="city-card" onclick="openCity('florence'); return false;" href="#">
+          <img src="photos/IMG_6119.JPG" alt="Florence">
+          <div class="city-card-footer">
+            <span class="city-name">Florence</span>
+            <span class="city-arrow">→</span>
+          </div>
+        </a>
+        <div class="city-connector"><div class="dashed-line"></div></div>
+        <a class="city-card" onclick="openCity('rome'); return false;" href="#">
+          <img src="photos/IMG_6174.JPG" alt="Rome">
+          <div class="city-card-footer">
+            <span class="city-name">Rome</span>
+            <span class="city-arrow">→</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="end-cap">
+        <div class="dashed-line"></div>
+        <div class="end-dot"></div>
+        <div class="end-label">fine</div>
+      </div>
     </div>
   </div>
+
+  <!-- MILAN FEED -->
+  <div id="feed-milan" class="feed-view">
+    <div class="feed-hero">
+      <div class="cover-blob1"></div>
+      <div class="cover-blob2"></div>
+      <button class="feed-back" onclick="closeCity()">← Trip overview</button>
+      <div class="feed-city-title">Milan</div>
+      <div class="feed-who">Heath, Rebecca, Jason</div>
+    </div>
+    <div class="feed-content">
+      <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
+      <div class="photo-block">
+        <img src="photos/IMG_6109.JPG" alt="Milan">
+        <div class="photo-caption">
+          <div class="photo-location">Milan · Italy</div>
+          <div class="photo-text">Add a caption or memory here.</div>
+        </div>
+      </div>
+      <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
+      <div class="story-block">
+        <div class="story-prompt">Remember when…</div>
+        <div class="story-text">Add a fun story or memory here that can be shared.</div>
+        <div class="story-date">April 2018</div>
+      </div>
+      <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
+      <div class="feed-end">
+        <div class="end-dot"></div>
+        <div class="end-label">la fine</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLORENCE FEED -->
+  <div id="feed-florence" class="feed-view">
+    <div class="feed-hero">
+      <div class="cover-blob1"></div>
+      <div class="cover-blob2"></div>
+      <button class="feed-back" onclick="closeCity()">← Trip overview</button>
+      <div class="feed-city-title">Florence</div>
+      <div class="feed-who">Heath, Rebecca, Jason</div>
+    </div>
+    <div class="feed-content">
+      <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
+      <div class="photo-block">
+        <img src="photos/IMG_6119.JPG" alt="Florence">
+        <div class="photo-caption">
+          <div class="photo-location">Florence · Italy</div>
+          <div class="photo-text">Add a caption or memory here.</div>
+        </div>
+      </div>
+      <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
+      <div class="story-block">
+        <div class="story-prompt">Remember when…</div>
+        <div class="story-text">Add a fun story or memory here that can be shared.</div>
+        <div class="story-date">April 2018</div>
+      </div>
+      <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
+      <div class="feed-end">
+        <div class="end-dot"></div>
+        <div class="end-label">la fine</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROME FEED -->
+  <div id="feed-rome" class="feed-view">
+    <div class="feed-hero">
+      <div class="cover-blob1"></div>
+      <div class="cover-blob2"></div>
+      <button class="feed-back" onclick="closeCity()">← Trip overview</button>
+      <div class="feed-city-title">Rome</div>
+      <div class="feed-who">Heath, Rebecca, Jason</div>
+    </div>
+    <div class="feed-content">
+      <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
+      <div class="photo-block">
+        <img src="photos/IMG_6174.JPG" alt="Rome">
+        <div class="photo-caption">
+          <div class="photo-location">Rome · Italy</div>
+          <div class="photo-text">Add a caption or memory here.</div>
+        </div>
+      </div>
+      <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
+      <div class="story-block">
+        <div class="story-prompt">Remember when…</div>
+        <div class="story-text">Add a fun story or memory here that can be shared.</div>
+        <div class="story-date">April 2018</div>
+      </div>
+      <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
+      <div class="feed-end">
+        <div class="end-dot"></div>
+        <div class="end-label">la fine</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openCity(city) {
+      document.getElementById('cover-view').style.display = 'none';
+      document.getElementById('feed-' + city).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+    function closeCity() {
+      document.querySelectorAll('.feed-view').forEach(el => el.classList.remove('active'));
+      document.getElementById('cover-view').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+  </script>
 </body>
 </html>
