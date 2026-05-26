@@ -24,7 +24,7 @@ h1 {
   font-size: 3.5rem;
   color: var(--color-light);
   line-height: 1;
-  letter-spacing: 1.5;
+  letter-spacing: 2rem;
   
 }
 
@@ -33,7 +33,7 @@ h2 {
   font-size: 2.625rem;
   color: var(--color-light);
   line-height: 1;
-  letter-spacing: normal;
+  letter-spacing: 1.5rem;
 }
 
 h3 {
@@ -140,7 +140,7 @@ small {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1rem;
+  padding: 0.25rem 1rem 0.75rem;
 }
 .city-name {
   font-size: 1rem;
