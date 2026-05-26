@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloock&family=Heebo:wght@100..900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #faf8f4;
+  font-family: 'Heebo', sans-serif;
+  color: #2c2a27;
+}
+
+.cover-hero {
+  background: var(--accent);
+  padding: 52px 28px 32px;
+  position: relative;
+  overflow: hidden;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.cover-blob1 {
+  position: absolute; top: -40px; right: -40px;
+  width: 180px; height: 180px; border-radius: 50%;
+  background: var(--accent-light); opacity: 0.45;
+}
+.cover-blob2 {
+  position: absolute; bottom: -20px; left: -30px;
+  width: 110px; height: 110px; border-radius: 50%;
+  background: var(--accent-dark); opacity: 0.4;
+}
+.cover-title {
+  font-family: 'Gloock', Georgia, serif;
+  font-size: 56px;
+  font-weight: 400;
+  font-style: italic;
+  color: #fff;
+  line-height: 1;
+  position: relative; z-index: 1;
+}
+.cover-meta {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 300;
+  margin-top: 6px;
+  position: relative; z-index: 1;
+}
+
+.timeline {
+  padding: 32px 24px 60px;
+}
+.date-separator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.date-pin { font-size: 22px; margin-bottom: 4px; }
+.date-label {
+  font-family: 'Gloock', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--accent);
+}
+.date-who {
+  font-size: 12px;
+  color: #888;
+  margin-top: 4px;
+  font-weight: 300;
+}
+
+.dashed-line {
+  height: 36px;
+  width: 1.5px;
+  margin: 0 auto;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--accent) 0px, var(--accent) 6px,
+    transparent 6px, transparent 12px
+  );
+}
+
+.city-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 0.5px solid rgba(0,0,0,0.08);
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 16px;
+}
+.city-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+.city-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+}
+.city-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--accent);
+}
+.city-arrow { font-size: 18px; color: var(--accent); }
+
+.end-cap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 0 48px;
+  gap: 6px;
+}
+.end-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.end-label {
+  font-family: 'Gloock', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--accent);
+}
+
+.feed-view { display: none; min-height: 100vh; }
+.feed-view.active { display: block; }
+
+.feed-hero {
+  background: var(--accent);
+  padding: 48px 24px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.feed-back {
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 16px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  position: relative; z-index: 1;
+  background: none; border: none; padding: 0;
+  font-family: 'Heebo', sans-serif;
+}
+.feed-city-title {
+  font-family: 'Gloock', serif;
+  font-size: 42px;
+  font-weight: 400;
+  font-style: italic;
+  color: #fff;
+  position: relative; z-index: 1;
+  line-height: 1;
+}
+.feed-who {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  margin-top: 6px;
+  font-weight: 300;
+  position: relative; z-index: 1;
+}
+
+.feed-content {
+  padding: 24px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.feed-dashed {
+  height: 28px;
+  display: flex;
+  justify-content: center;
+}
+.feed-dashed-line {
+  width: 1.5px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--accent) 0px, var(--accent) 6px,
+    transparent 6px, transparent 12px
+  );
+}
+
+.photo-block {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 0.5px solid rgba(0,0,0,0.08);
+}
+.photo-block img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+.photo-caption { padding: 10px 14px 14px; }
+.photo-location {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 3px;
+}
+.photo-text {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.55;
+}
+
+.story-block {
+  background: var(--accent);
+  border-radius: 16px;
+  padding: 18px 18px 16px;
+}
+.story-prompt {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.65);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.story-text {
+  font-family: 'Gloock', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: #fff;
+  line-height: 1.65;
+}
+.story-date {
+  font-size: 10px;
+  color: rgba(255,255,255,0.55);
+  margin-top: 10px;
+  letter-spacing: 0.06em;
+}
