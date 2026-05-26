@@ -121,7 +121,7 @@ small {
 }
 
 .city-card {
-  stroke: 1px var(--accent);
+  border: 1.5px, var(--accent);
   border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
