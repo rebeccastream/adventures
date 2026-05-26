@@ -11,156 +11,52 @@
       --accent-dark: #B83A15;
     }
   </style>
-  </style>
   <link rel="stylesheet" href="../style.css">
+  <script>
+    sessionStorage.setItem('accent', '#D44720');
+    sessionStorage.setItem('accent-light', '#E9752E');
+    sessionStorage.setItem('accent-dark', '#B83A15');
+  </script>
 </head>
 <body>
-
-  <div id="cover-view">
-    <div class="cover-hero">
-      <div class="cover-blob1"></div>
-      <div class="cover-blob2"></div>
-      <div class="cover-title">Italy</div>
-      <div class="cover-meta">1 trip</div>
-    </div>
-
-    <div class="timeline">
-      <div class="date-separator">
-        <div class="date-pin">❣</div>
-        <div class="date-label">April 2018</div>
-        <div class="date-who">with Jason, Heath, & Rebecca</div>
-      </div>
-
-      <div class="dashed-line"></div>
-      <a class="city-card" onclick="openCity('milan'); return false;" href="#">
-        <img src="photos/IMG_6109.JPG" alt="Milan">
-        <div class="city-card-footer">
-          <span class="city-name">Milan</span>
-          <span class="city-arrow">→</span>
-        </div>
-      </a>
-      <div class="dashed-line"></div>
-      <a class="city-card" onclick="openCity('florence'); return false;" href="#">
-        <img src="photos/IMG_6119.JPG" alt="Florence">
-        <div class="city-card-footer">
-          <span class="city-name">Florence</span>
-          <span class="city-arrow">→</span>
-        </div>
-      </a>
-      <div class="dashed-line"></div>
-      <a class="city-card" onclick="openCity('rome'); return false;" href="#">
-        <img src="photos/IMG_6174.JPG" alt="Rome">
-        <div class="city-card-footer">
-          <span class="city-name">Rome</span>
-          <span class="city-arrow">→</span>
-        </div>
-      </a>
-    </div>
+  <div class="cover-hero">
+    <div class="cover-blob1"></div>
+    <div class="cover-blob2"></div>
+    <h1>Italy</h1>
+    <small>1 trip ✈ April 2018 </small>
   </div>
 
-  <div id="feed-milan" class="feed-view">
-    <div class="feed-hero">
-      <div class="cover-blob1"></div>
-      <div class="cover-blob2"></div>
-      <button class="feed-back" onclick="closeCity()">← Trip overview</button>
-      <div class="feed-city-title">Milan</div>
-      <div class="feed-who">April 2018</div>
+  <div class="timeline">
+    <div class="date-separator">
+      <div class="date-pin">❣</div>
+      <h3>April 2018</h3>
+      <small>with Jason, Heath, & Rebecca</small>
     </div>
-    <div class="feed-content">
-      <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
-      <div class="photo-block">
-        <img src="photos/IMG_6109.JPG" alt="Milan">
-        <div class="photo-caption">
-          <div class="photo-location">Milan · Italy</div>
-          <div class="photo-text">Add a caption or memory here.</div>
-        </div>
-      </div>
-      <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
-      <div class="story-block">
-        <div class="story-prompt">Remember when…</div>
-        <div class="story-text">Add a fun story or memory here.</div>
-        <div class="story-date">April 2018</div>
-      </div>
-      <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
-      <div class="end-cap">
-        <div class="end-label"> ❣ </br> la fine</div>
-      </div>
-    </div>
-  </div>
 
-  <div id="feed-florence" class="feed-view">
-    <div class="feed-hero">
-      <div class="cover-blob1"></div>
-      <div class="cover-blob2"></div>
-      <button class="feed-back" onclick="closeCity()">← Trip overview</button>
-      <div class="feed-city-title">Florence</div>
-      <div class="feed-who">Jason, Heath, & Rebecca</div>
-    </div>
-    <div class="feed-content">
-      <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
-      <div class="photo-block">
-        <img src="photos/IMG_6119.JPG" alt="Florence">
-        <div class="photo-caption">
-          <div class="photo-location">Florence · Italy</div>
-          <div class="photo-text">Add a caption or memory here.</div>
-        </div>
+    <div class="dashed-line"></div>
+    <a class="city-card" href="milan/">
+      <img src="photos/IMG_6109.JPG" alt="Milan">
+      <div class="city-card-footer">
+        <span class="city-name">Milan</span>
+        <span class="city-arrow">✈</span>
       </div>
-      <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
-      <div class="story-block">
-        <div class="story-prompt">Remember when…</div>
-        <div class="story-text">Add a fun story or memory here.</div>
-        <div class="story-date">April 2018</div>
+    </a>
+    <div class="dashed-line"></div>
+    <a class="city-card" href="florence/">
+      <img src="photos/IMG_6119.JPG" alt="Florence">
+      <div class="city-card-footer">
+        <span class="city-name">Florence</span>
+        <span class="city-arrow">↣</span>
       </div>
-      <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
-      <div class="feed-end">
-        <div class="end-dot">❣</div>
-        <div class="end-label">la fine</div>
+    </a>
+    <div class="dashed-line"></div>
+    <a class="city-card" href="rome/">
+      <img src="photos/IMG_6174.JPG" alt="Rome">
+      <div class="city-card-footer">
+        <span class="city-name">Rome</span>
+        <span class="city-arrow">↣</span>
       </div>
-    </div>
+    </a>
   </div>
-
-  <div id="feed-rome" class="feed-view">
-    <div class="feed-hero">
-      <div class="cover-blob1"></div>
-      <div class="cover-blob2"></div>
-      <button class="feed-back" onclick="closeCity()">← Trip overview</button>
-      <div class="feed-city-title">Rome</div>
-      <div class="feed-who">Jason, Heath, & Rebecca</div>
-    </div>
-    <div class="feed-content">
-      <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
-      <div class="photo-block">
-        <img src="photos/IMG_6174.JPG" alt="Rome">
-        <div class="photo-caption">
-          <div class="photo-location">Rome · Italy</div>
-          <div class="photo-text">Add a caption or memory here.</div>
-        </div>
-      </div>
-      <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
-      <div class="story-block">
-        <div class="story-prompt">Remember when…</div>
-        <div class="story-text">Add a fun story or memory here.</div>
-        <div class="story-date">April 2018</div>
-      </div>
-      <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
-      <div class="feed-end">
-        <div class="end-dot">❣</div>
-        <div class="end-label">la fine</div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    function openCity(city) {
-      document.getElementById('cover-view').style.display = 'none';
-      document.getElementById('feed-' + city).classList.add('active');
-      window.scrollTo(0, 0);
-    }
-    function closeCity() {
-      document.querySelectorAll('.feed-view').forEach(el => el.classList.remove('active'));
-      document.getElementById('cover-view').style.display = 'block';
-      window.scrollTo(0, 0);
-    }
-  </script>
 </body>
 </html>
