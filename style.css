@@ -122,14 +122,14 @@ small {
 }
 
 .city-card {
+  background: rgb(from var(--accent-light) r g b / 0);
   cursor: pointer;
   text-decoration: none;
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
 }
 .city-card img {
   width: 100%;
-  background: var(--accent-light);
   border-radius: 16px;
   overflow: hidden;
   height: 11.25rem;
@@ -140,7 +140,7 @@ small {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.25rem 1rem 0.75rem;
+  padding: 0.25rem 1rem 0rem;
 }
 .city-name {
   font-size: 1rem;
