@@ -71,7 +71,7 @@ small {
   width: 6.875rem; height: 6.875rem; border-radius: 50%;
   background: var(--accent-dark); opacity: 0.4;
 }
-.cover-meta {
+.onBG {
   font-size: 0.8125rem;
   color: rgba(255,255,255,0.7);
   font-weight: 300;
@@ -141,7 +141,7 @@ small {
   font-weight: 500;
   color: var(--accent);
 }
-.city-arrow { font-size: 1.125rem; color: var(--accent); }
+.city-arrow { font-size: 1.5rem; color: var(--accent); }
 
 .feed-hero {
   background: var(--accent);
