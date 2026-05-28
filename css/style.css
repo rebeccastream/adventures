@@ -7,6 +7,10 @@
   --font-sans: 'Heebo', sans-serif;
   --base: 1rem;
   --color-light: #F9F3EB;
+  
+  --one:#bdd7ff;
+  --two:#4c94ff;
+  --three:#103064;  
 }
 
 body {
@@ -22,25 +26,25 @@ body {
 h1 {
   font-family: var(--font-serif);
   font-size: 3.5rem;
-  color: var(--color-light);
+  color: var(--color-accent);
   line-height: 1;
-  letter-spacing: .4rem;
+  letter-spacing: .2rem;
   
 }
 
 h2 {
   font-family: var(--font-serif);
-  font-size: 2.625rem;
-  color: var(--color-light);
+  font-size: 2.5rem;
+  color: var(--color-accent);
   line-height: 1;
   letter-spacing: .4rem;
 }
 
 h3 {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   color: var(--accent);
-  letter-spacing: normal;
+  letter-spacing: .1rem;
 }
 
 p {
@@ -55,6 +59,56 @@ small {
   font-weight: 300;
 }
 
+ul {
+  font-size: 1rem;
+  line-height: 1.55;
+  list-style: none;
+  margin-top: 2rem;
+}
+
+li {
+ 
+}
+
+
+ul li a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: var(--accent);
+  margin-bottom: 1.15rem;
+  padding: 1.25rem;
+  background: var(--accent-light);
+  list-style-position: inside;
+  border-radius: 16px;
+
+}
+
+
+li a::before {
+  content: "✈";
+  font-size: 1.75rem;
+  padding-right: .5rem;
+}
+
+
+ul li a:hover {
+  background-color: var(--color-light);
+  outline: 1.5px solid var(--accent);
+  outline-offset: -1.5px;  
+}
+
+
+a {
+  text-decoration: none;
+}
+
+
+.countries-home {
+  margin-top: 3rem;
+}
+
+
 .cover-hero {
   background: var(--accent);
   padding: 3.25rem 1.75rem 2rem;
@@ -64,7 +118,10 @@ small {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  border-radius: 0 0 16px 16px;
 }
+
+/* Background circles for header area
 .cover-blob1 {
   position: absolute; top: -2.5rem; right: -2.5rem;
   width: 11.25rem; height: 11.25rem; border-radius: 50%;
@@ -75,6 +132,8 @@ small {
   width: 6.875rem; height: 6.875rem; border-radius: 50%;
   background: var(--accent-dark); opacity: 0.4;
 }
+*/
+
 .onBG {
   color: var(--color-light);  
   font-weight: 300;
@@ -84,6 +143,7 @@ small {
 .cover-hero h1,
 .cover-hero h2 {
   position: relative; z-index: 1;
+  color: var(--color-light);
 }
 
 .timeline {
@@ -147,16 +207,41 @@ small {
 }
 .city-arrow { font-size: 1.75rem; color: var(--accent); }
 
+
 .feed-hero {
-  background: var(--accent);
-  padding: 3rem 1.5rem 1.5rem;
-  position: relative;
-  overflow: hidden;
+  background: var(--color-light);
+  padding: 3rem 1.5rem 4rem;
+  border-top: 1.5px solid var(--accent); 
+  border-left: 1.5px solid var(--accent);
+  border-right: 1.5px solid var(--accent);
+  border-radius: 16px 16px 0 0;
+  text-align: center;
+  color: var(--accent);
 }
+
+.feed-hero-date{
+  font-size: 1.5rem;
+  color: var(--accent-dark);
+  padding-top: .75rem;
+  font-weight: 300;
+}
+
+/* Adding wave to outline */
+.wave {
+  margin-top: -1rem;
+  height: 2rem;
+  background: var(--accent);
+  mask: 
+    radial-gradient(9.39px at 50% calc(100% + 0.86px),#0000 calc(99% - 1.5px),#000 calc(101% - 1.5px) 99%,#0000 101%) calc(50% - 17.2px) calc(50% - 5.05px + .5px)/34.4px 10.1px repeat-x,
+    radial-gradient(9.39px at 50% -0.86px,#0000 calc(99% - 1.5px),#000 calc(101% - 1.5px) 99%,#0000 101%) 50% calc(50% + 5.05px)/34.4px 10.1px repeat-x;
+}
+
 .feed-back {
+  height: 2rem;
   font-size: 1rem;
-  color: var(--color-light);
-  margin-bottom: 1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--accent);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -165,20 +250,25 @@ small {
   background: none; border: none; padding: 0;
   font-family: var(--font-sans);
   text-decoration: none;
-}
-.feed-small {
-  font-size: 0.8125rem;
-  color: rgba(255,255,255,0.7);
-  margin-top: 0.375rem;
-  font-weight: 300;
-  position: relative; z-index: 1;
-}
-.feed-hero h2 {
-  position: relative; z-index: 1;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  padding: 0 .75rem;
+  border-radius: 16px;
 }
 
+.back-arrow { font-size: 1.5rem; padding-bottom:.125rem; }
+
+
+.feed-back:hover {
+  outline: 1.5px solid var(--accent-dark);
+  background-color: var(--accent-light);
+  margin-top: 2.75rem;
+  margin-bottom: 2.25rem;
+}
+
+
 .feed-content {
-  padding: 1.5rem 1.25rem 3.75rem;
+  padding: .5rem 1.25rem 3.75rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -248,7 +338,7 @@ small {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.5rem 0 3rem;
+  padding: 0 0 3rem;
   gap: 0.375rem;
 }
 
@@ -257,4 +347,5 @@ small {
   font-size: 1.125rem;
   color: var(--accent);
   text-align: center;
+  padding-top: .75rem;
 }
