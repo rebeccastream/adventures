@@ -31,8 +31,8 @@
           "name": "Florence",
           "slug": "florence",
           "hero": [
-            "https://pub-27dfd4e7906e4c2bbdb0a236ec4a506f.r2.dev/italy/florence/photo1.jpeg",
-            "https://pub-27dfd4e7906e4c2bbdb0a236ec4a506f.r2.dev/italy/florence/photo2.jpeg",
+            "https://pub-27dfd4e7906e4c2bbdb0a236ec4a506f.r2.dev/italy/florence/5505AB54-402F-48AF-8EED-FA657FFF03ED_1_105_c.jpeg",
+            "https://pub-27dfd4e7906e4c2bbdb0a236ec4a506f.r2.dev/italy/florence/65AEE957-D047-4DFD-B30C-52CBBFC02FBB_1_105_c.jpeg",
             "https://pub-27dfd4e7906e4c2bbdb0a236ec4a506f.r2.dev/italy/florence/photo3.jpeg"
           ],
           "cover": "https://pub-...fallback.jpeg",
@@ -43,6 +43,14 @@
               "location": "Florence · Italy",
               "caption": "Add a caption here."
             },
+            {
+              "type": "photo",
+              "src":"https://pub-27dfd4e7906e4c2bbdb0a236ec4a506f.r2.dev/italy/florence/65AEE957-D047-4DFD-B30C-52CBBFC02FBB_1_105_c.jpeg",
+              "location": "Florence · Italy",
+              "caption": "Add a caption here."
+            },
+
+
             {
               "type": "story",
               "text": "Add a fun story or memory here.",
@@ -58,6 +66,12 @@
             {
               "type": "photo",
               "src": "https://pub-27dfd4e7906e4c2bbdb0a236ec4a506f.r2.dev/italy/rome/IMG_6174.JPG",
+              "location": "Rome · Italy",
+              "caption": "Add a caption here."
+            },
+            {
+              "type": "photo",
+              "src":"https://pub-27dfd4e7906e4c2bbdb0a236ec4a506f.r2.dev/italy/florence/5505AB54-402F-48AF-8EED-FA657FFF03ED_1_105_c.jpeg",
               "location": "Rome · Italy",
               "caption": "Add a caption here."
             },
