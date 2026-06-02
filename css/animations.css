@@ -1,0 +1,88 @@
+/* Base state — elements start hidden/offset */
+.cover-hero h1,
+.cover-hero h2 {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  animation: fadeUp 0.4s ease forwards;
+  animation-delay: 0.1s;
+}
+
+.onBG {
+  opacity: 0;
+  animation: fadeIn 0.4s ease forwards;
+  animation-delay: 0.3s;
+}
+
+.date-separator {
+  opacity: 0;
+  animation: fadeIn 0.4s ease forwards;
+  animation-delay: 0.2s;
+}
+
+/* Dashed line draws downward */
+.dashed-line,
+.feed-dashed-line {
+  animation: drawDown 0.6s ease forwards;
+  transform-origin: top center;
+  animation-delay: 0.35s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+/* City cards stagger in */
+.city-card:nth-child(1) { opacity: 0; transform: translateY(1.5rem); animation: fadeUp 0.4s ease forwards; animation-delay: 0.4s; }
+.city-card:nth-child(2) { opacity: 0; transform: translateY(1.5rem); animation: fadeUp 0.4s ease forwards; animation-delay: 0.55s; }
+.city-card:nth-child(3) { opacity: 0; transform: translateY(1.5rem); animation: fadeUp 0.4s ease forwards; animation-delay: 0.7s; }
+.city-card:nth-child(4) { opacity: 0; transform: translateY(1.5rem); animation: fadeUp 0.4s ease forwards; animation-delay: 0.85s; }
+
+/* Feed items — start hidden, JS triggers .visible */
+.photo-block,
+.story-block,
+.end-cap {
+  opacity: .5;
+  transform: translateY(1.25rem) scale(0.8);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.story-block {
+  transform: translateY(1.25rem) scale(0.8);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.photo-block.visible,
+.story-block.visible,
+.end-cap.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Keyframes */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes drawDown {
+  from {
+    opacity: 1;
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0% 0);
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -4,57 +4,55 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Italy</title>
-  <style>
-    :root {
-      --accent: #E26245;
-      --accent-light: #F6DDD2;
-      --accent-dark: #B94F37;
-    }
-  </style>
   <link rel="stylesheet" href="../css/style.css">
-  <script>
-    sessionStorage.setItem('accent', '#E26245');
-    sessionStorage.setItem('accent-light', '#F6DDD2');
-    sessionStorage.setItem('accent-dark', '#B94F37');
-  </script>
+  <link rel="stylesheet" href="../css/animations.css">
 </head>
 <body>
-  <div class="cover-hero">
-    <h1>Italy</h1>
-    <p class="onBG">1 trip</p>
-  </div>
+  <div id="app"></div>
+  <script>
+    fetch('data.json')
+      .then(r => r.json())
+      .then(data => {
+        document.documentElement.style.setProperty('--accent', data.accent);
+        document.documentElement.style.setProperty('--accent-light', data['accent-light']);
+        document.documentElement.style.setProperty('--accent-dark', data['accent-dark']);
+        sessionStorage.setItem('accent', data.accent);
+        sessionStorage.setItem('accent-light', data['accent-light']);
+        sessionStorage.setItem('accent-dark', data['accent-dark']);
 
-  <div class="timeline">
-    <div class="date-separator">
-      <div class="date-pin">❣&#xFE0E;</div>
-      <h3>April 2017</h3>
-      <p>with Jason, Heath, & Rebecca</p>
-    </div>
+        const tripsHTML = data.trips.map(trip =>
+          `<div class="date-separator">
+            <div class="date-pin">❣&#xFE0E;</div>
+            <h3>${trip.date}</h3>
+            <p>with ${trip.who}</p>
+          </div>
+          <div class="city-list">
+          
+        ${trip.cities.map(city => {
+        const cover = city.hero?.length
+          ? city.hero[Math.floor(Math.random() * city.hero.length)]
+          : city.cover;
+        return `
+          <div class="dashed-line"></div>
+          <a class="city-card" href="${city.slug}/index.html">
+            <img src="${cover}" alt="${city.name}">
+            <div class="city-card-footer">
+              <span class="city-name">${city.name}</span>
+              <span class="city-arrow">✈&#xFE0E;</span>
+            </div>
+          </a>`;
+      }).join('')}
+      </div>`
+      ).join('');
 
-    <div class="dashed-line"></div>
-    <a class="city-card" href="milan/index.html">
-      <img src="photos/IMG_6109.JPG" alt="Milan">
-      <div class="city-card-footer">
-        <span class="city-name">Milan</span>
-        <span class="city-arrow">✈&#xFE0E;</span>
-      </div>
-    </a>
-    <div class="dashed-line"></div>
-    <a class="city-card" href="florence/index.html">
-      <img src="photos/IMG_6119.JPG" alt="Florence">
-      <div class="city-card-footer">
-        <span class="city-name">Florence</span>
-        <span class="city-arrow">✈&#xFE0E;</span>
-      </div>
-    </a>
-    <div class="dashed-line"></div>
-    <a class="city-card" href="rome/">
-      <img src="photos/IMG_6174.JPG" alt="Rome">
-      <div class="city-card-footer">
-        <span class="city-name">Rome</span>
-        <span class="city-arrow">✈&#xFE0E;</span>
-      </div>
-    </a>
-  </div>
+        document.getElementById('app').innerHTML = `
+          <div class="cover-hero">
+            <h1>${data.country}</h1>
+            <p class="onBG">${data.trips.length} trip${data.trips.length > 1 ? 's' : ''}</p>
+          </div>
+          <div class="timeline">${tripsHTML}</div>
+        `;
+      });
+  </script>
 </body>
 </html>
