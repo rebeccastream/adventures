@@ -12,6 +12,7 @@
     }
   </style>
   <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/animations.css">
   <script>
     const a = sessionStorage.getItem('accent');
     if (a) {
@@ -37,7 +38,7 @@
   <div class="feed-content">
     <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
     <div class="photo-block">
-       <img src="../photos/IMG_6109.JPG" alt="Florence">
+       <img src="https://pub-27dfd4e7906e4c2bbdb0a236ec4a506f.r2.dev/italy/florence/08817661-A68C-4564-B86E-53709D030458.jpeg" alt="Florence">
       <div class="photo-caption">
         <div class="photo-location">Trevi Fountain</div>
         <p>Add a caption here.</p>
@@ -57,5 +58,22 @@
       la fine</p>
     </div>
   </div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.photo-block, .story-block, .end-cap')
+    .forEach(el => observer.observe(el));
+</script>
+
+
+
 </body>
 </html>

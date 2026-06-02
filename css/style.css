@@ -211,12 +211,14 @@ a {
 .feed-hero {
   background: var(--color-light);
   padding: 3rem 1.5rem 4rem;
-  border-top: 1.5px solid var(--accent); 
-  border-left: 1.5px solid var(--accent);
-  border-right: 1.5px solid var(--accent);
+  border-top: 2px solid var(--accent); 
+  border-left: 2px solid var(--accent);
+  border-right: 2px solid var(--accent);
   border-radius: 16px 16px 0 0;
   text-align: center;
   color: var(--accent);
+  margin: 0 1.25rem ;
+
 }
 
 .feed-hero-date{
@@ -228,12 +230,12 @@ a {
 
 /* Adding wave to outline */
 .wave {
-  margin-top: -1rem;
+  margin: -1.35rem 1.25rem 0 1.25rem;
   height: 2rem;
   background: var(--accent);
   mask: 
-    radial-gradient(9.39px at 50% calc(100% + 0.86px),#0000 calc(99% - 1.5px),#000 calc(101% - 1.5px) 99%,#0000 101%) calc(50% - 17.2px) calc(50% - 5.05px + .5px)/34.4px 10.1px repeat-x,
-    radial-gradient(9.39px at 50% -0.86px,#0000 calc(99% - 1.5px),#000 calc(101% - 1.5px) 99%,#0000 101%) 50% calc(50% + 5.05px)/34.4px 10.1px repeat-x;
+    radial-gradient(10.35px at 50% calc(100% + 0.93px),#0000 calc(99% - 2px),#000 calc(101% - 2px) 99%,#0000 101%) calc(50% - 18.6px) calc(50% - 5.65px + .5px)/37.2px 11.3px repeat-x,
+    radial-gradient(10.35px at 50% -0.93px,#0000 calc(99% - 2px),#000 calc(101% - 2px) 99%,#0000 101%) 50% calc(50% + 5.65px)/37.2px 11.3px repeat-x;
 }
 
 .feed-back {
@@ -268,6 +270,7 @@ a {
 
 
 .feed-content {
+  margin: 0 1rem;
   padding: .5rem 1.25rem 3.75rem;
   display: flex;
   flex-direction: column;
