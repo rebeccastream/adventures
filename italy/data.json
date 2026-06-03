@@ -31,7 +31,7 @@
           "slug": "florence",
           "hero": [
             "https://pub-27dfd4e7906e4c2bbdb0a236ec4a506f.r2.dev/italy/florence/5505AB54-402F-48AF-8EED-FA657FFF03ED_1_105_c.jpeg",
-            "https://pub-27dfd4e7906e4c2bbdb0a236ec4a506f.r2.dev/italy/florence/65AEE957-D047-4DFD-B30C-52CBBFC02FBB_1_105_c.jpeg",
+            "https://pub-27dfd4e7906e4c2bbdb0a236ec4a506f.r2.dev/italy/florence/65AEE957-D047-4DFD-B30C-52CBBFC02FBB_1_105_c.jpeg"
           ],
           "cover": "https://pub-27dfd4e7906e4c2bbdb0a236ec4a506f.r2.dev/italy/florence/65AEE957-D047-4DFD-B30C-52CBBFC02FBB_1_105_c.jpeg",
           "feed": [
@@ -40,6 +40,11 @@
               "src": "https://pub-27dfd4e7906e4c2bbdb0a236ec4a506f.r2.dev/italy/florence/08817661-A68C-4564-B86E-53709D030458.jpeg",
               "location": "Florence · Italy",
               "caption": "Add a caption here."
+            },
+            { 
+              "type": "story",
+              "text": "Jason ate a giant steak that was bigger than his head!",
+              "date": "April 9"
             },
             {
               "type": "photo",
@@ -54,8 +59,8 @@
             },
             {              "type": "photo",
               "src":"https://pub-27dfd4e7906e4c2bbdb0a236ec4a506f.r2.dev/italy/florence/5505AB54-402F-48AF-8EED-FA657FFF03ED_1_105_c.jpeg",
-              "location": "Florence · Italy",
-              "caption": "Add a caption here."
+              "location": "Piazzle Michelangelo",
+              "caption": "Last night in Florence, we climbed the steps and caught sunset from the top"
             }
           ]
         },

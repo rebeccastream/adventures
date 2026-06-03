@@ -3,77 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Florence · Italy</title>
-  <style>
-    :root {
-      --accent: #E26245;
-      --accent-light: #F6DDD2;
-      --accent-dark: #B94F37;
-    }
-  </style>
+  <title>Italy</title>
   <link rel="stylesheet" href="../../css/style.css">
   <link rel="stylesheet" href="../../css/animations.css">
-  <script>
-    const a = sessionStorage.getItem('accent');
-    if (a) {
-      document.documentElement.style.setProperty('--accent', a);
-      document.documentElement.style.setProperty('--accent-light', sessionStorage.getItem('accent-light'));
-      document.documentElement.style.setProperty('--accent-dark', sessionStorage.getItem('accent-dark'));
-    }
-  </script>
-
 </head>
 <body>
-   <a class="feed-back" href="../index.html"><span class="back-arrow">«&#xFE0E;</span> Trip overview</a>
-  <div class="feed-hero">
-    <h1>Florence</h1>
-    <div class="feed-hero-date">
-      <p>April 2017</p>
-    </div>
-  </div>
-  <div class="wave"><p>&nbsp</p></div> 
- 
+  <div id="app"></div>
+  <script>
+    const slug = 'florence'; // change for other cities
 
-  
-  <div class="feed-content">
-    <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
-    <div class="photo-block">
-       <img src="https://pub-27dfd4e7906e4c2bbdb0a236ec4a506f.r2.dev/italy/florence/08817661-A68C-4564-B86E-53709D030458.jpeg" alt="Florence">
-      <div class="photo-caption">
-        <div class="photo-location">Trevi Fountain</div>
-        <p>Add a caption here.</p>
-      </div>
-    </div>
-    
-    <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
-    <div class="story-block">
-      <div class="story-prompt">Remember when…</div>
-      <p>Add a nice memory here. </p>
-      <div class="story-date">April 24, 2018</div>
-    </div>
-    
-    <div class="end-cap">
-    <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
-      <p class="end-label"> ❣&#xFE0E; </br> 
-      la fine</p>
-    </div>
-  </div>
+    fetch('../data.json')
+      .then(r => r.json())
+      .then(data => {
+        document.documentElement.style.setProperty('--accent', data.accent);
+        document.documentElement.style.setProperty('--accent-light', data['accent-light']);
+        document.documentElement.style.setProperty('--accent-dark', data['accent-dark']);
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
+        let city, trip;
+        data.trips.forEach(t => t.cities.forEach(c => {
+          if (c.slug === slug) { city = c; trip = t; }
+        }));
 
-  document.querySelectorAll('.photo-block, .story-block, .end-cap')
-    .forEach(el => observer.observe(el));
-</script>
+        const feedHTML = city.feed.map(item => {
+          if (item.type === 'photo') return `
+            <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
+            <div class="photo-block">
+              <img src="${item.src}" alt="${city.name}">
+              <div class="photo-caption">
+                <div class="photo-location">${item.location}</div>
+                <p>${item.caption}</p>
+              </div>
+            </div>`;
+          if (item.type === 'story') return `
+            <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
+            <div class="story-block">
+              <div class="story-prompt">Remember when…</div>
+              <p>${item.text}</p>
+              <div class="story-date">${item.date}</div>
+            </div>`;
+          return '';
+        }).join('');
 
+        document.getElementById('app').innerHTML = `
+          <a class="feed-back" href="../index.html">
+            <span class="back-arrow">«&#xFE0E;</span> Trip overview
+          </a>
+          <div class="feed-hero">
+            <h1>${city.name}</h1>
+            <div class="feed-hero-date"><p>${trip.date}</p></div>
+          </div>
+          <div class="wave"><p>&nbsp;</p></div>
+          <div class="feed-content">
+            ${feedHTML}
+            <div class="end-cap">
+              <div class="feed-dashed"><div class="feed-dashed-line"></div></div>
+              <p class="end-label">❣&#xFE0E;<br>la fine</p>
+            </div>
+          </div>`;
 
+        // Scroll animations
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
 
+        document.querySelectorAll('.photo-block, .story-block, .end-cap')
+          .forEach(el => observer.observe(el));
+      });
+  </script>
 </body>
 </html>

@@ -34,13 +34,17 @@
           : city.cover;
         return `
           <div class="dashed-line"></div>
-          <a class="city-card" href="${city.slug}/index.html">
-            <img src="${cover}" alt="${city.name}">
-            <div class="city-card-footer">
-              <span class="city-name">${city.name}</span>
-              <span class="city-arrow">✈&#xFE0E;</span>
-            </div>
-          </a>`;
+            <div class="city-card-wrap">
+              <a class="city-card" href="${city.slug}/index.html">
+                <img src="${cover}" alt="${city.name}">
+               <div class="city-card-divider"></div>
+                <div class="city-card-footer">
+                <div class="horiz-line"></div> 
+                  <span class="city-name">${city.name}</span>
+                  <span class="city-arrow">✈&#xFE0E;</span>
+                </div>
+              </a>
+            </div>`;
       }).join('')}
       </div>`
       ).join('');
